@@ -1,0 +1,81 @@
+import { Product } from "@common/interfaces/product.interface";
+
+export const DUMMY_PRODUCTS: Product[] = [
+  {
+    id: 1,
+    name: "Laptop Gamer RTX 4060",
+    stock: 5,
+    price: 1499,
+    category: "Laptops",
+  },
+  {
+    id: 2,
+    name: "Monitor UltraWide 34”",
+    stock: 8,
+    price: 699,
+    category: "Monitors",
+  },
+  {
+    id: 2,
+    name: "Monitor UltraWide 19”",
+    stock: 18,
+    price: 399,
+    category: "Monitors",
+  },
+  {
+    id: 3,
+    name: "Teclado Mecánico RGB",
+    stock: 20,
+    price: 129,
+    category: "Keyboards",
+  },
+  {
+    id: 4,
+    name: "Mouse Inalámbrico Logitech",
+    stock: 15,
+    price: 89,
+    category: "Mice",
+  },
+  {
+    id: 5,
+    name: "Silla Ergonómica Gamer",
+    stock: 7,
+    price: 299,
+    category: "Chairs",
+  },
+  {
+    id: 6,
+    name: "Disco Duro Externo 2TB",
+    stock: 12,
+    price: 149,
+    category: "Storage",
+  },
+  {
+    id: 7,
+    name: "Tarjeta Gráfica RTX 4070",
+    stock: 3,
+    price: 799,
+    category: "Graphics Cards",
+  },
+  {
+    id: 8,
+    name: "Procesador Intel i9 13th Gen",
+    stock: 6,
+    price: 549,
+    category: "Processors",
+  },
+  {
+    id: 9,
+    name: "Auriculares Inalámbricos Sony",
+    stock: 10,
+    price: 199,
+    category: "Headphones",
+  },
+  {
+    id: 10,
+    name: "Cámara Web 4K",
+    stock: 9,
+    price: 149,
+    category: "Webcams",
+  },
+];
