@@ -6,7 +6,7 @@
 
 Aplicación web para visualización y gestión de productos mediante un dashboard interactivo con capacidades CRUD.
 
-![Dashboard Preview](./preview.png) <!-- Si tienes imagen de preview -->
+![Dashboard Preview](src/assets/captura.png) <!-- Si tienes imagen de preview -->
 
 ## ✨ Características Principales
 
