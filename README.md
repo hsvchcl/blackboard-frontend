@@ -11,12 +11,14 @@ Aplicación web para visualización y gestión de productos mediante un dashboar
 ## ✨ Características Principales
 
 - **Dashboard Analítico**
+
   - Indicadores clave (KPIs) con visualización de datos resumidos
   - Gráficos estadísticos usando MUI X Charts
   - Visualización responsiva adaptada a diferentes dispositivos
 
 - **Gestión de Productos**
-  - Tabla interactiva con paginación y filtros
+
+  - Tabla interactiva con filtros
   - Operaciones CRUD completas:
     - Crear nuevos productos (via menú lateral)
     - Editar productos existentes (modal in-place)
@@ -31,20 +33,21 @@ Aplicación web para visualización y gestión de productos mediante un dashboar
 
 ## 🛠 Stack Tecnológico
 
-| Tecnología              | Uso                                                                 | Versión  |
-|-------------------------|---------------------------------------------------------------------|----------|
-| React + TypeScript      | Core de la aplicación                                              | 18.2.0   |
-| Vite                    | Bundler y entorno de desarrollo                                    | 4.4.5    |
-| MUI (Material-UI)       | Componentes UI y sistema de diseño                                 | 5.14.20  |
-| MUI X Charts            | Visualización de gráficos (bar, line, pie)                         | 6.0.0    |
-| Zustand                 | Gestión de estado global                                           | 4.4.0    |
-| react-hook-form         | Manejo de formularios con validación                               | 7.45.1   |
-| Lucide React            | Iconografía moderna                                                | 0.263.1  |
-| Axios                   | Cliente HTTP para API calls (si aplica)                            | 1.5.0    |
+| Tecnología         | Uso                                        | Versión |
+| ------------------ | ------------------------------------------ | ------- |
+| React + TypeScript | Core de la aplicación                      | 18.2.0  |
+| Vite               | Bundler y entorno de desarrollo            | 6.1.0   |
+| MUI (Material-UI)  | Componentes UI y sistema de diseño         | 6.4.3   |
+| MUI X Charts       | Visualización de gráficos (bar, line, pie) | 7.25.0  |
+| Zustand            | Gestión de estado global                   | 5.0.3   |
+| react-hook-form    | Manejo de formularios con validación       | 7.54.2  |
+| Lucide React       | Iconografía moderna                        | 0.474.0 |
+| Axios              | Cliente HTTP para API calls (si aplica)    | 1.7.9   |
 
 ## 🧠 ¿Por qué Zustand en lugar de Redux Toolkit?
 
-La elección de Zustand se basa en:
+Despues de haber trabajando en varios proyectos con redux, nunca me senti comodo con su implementación (espero que les pase lo mismo), hasta que conoci zuztand, que una vez instalado se genera un hook y ya se puede comenzar a utilizar, es por eso que La elección de Zustand se basa en:
+
 - **Simplicidad**: Setup inicial en ~5 líneas de código vs configuración compleja de Redux (store, slices, providers)
 - **Cero Boilerplate**: Elimina la necesidad de action types, dispatchers y reducers
 - **Rendimiento**: Actualizaciones selectivas de estado con memoización automática
@@ -53,9 +56,12 @@ La elección de Zustand se basa en:
 - **TypeScript Nativo**: Tipado fuerte sin configuración adicional
 - **Patrón de actualización**: API similar a useState para rápida adopción
 
-Ejemplo de store:
+(espero que esta decisión no afecte la evaluación)
+
+Acá un ejemplo de store:
+
 ```tsx
-import { create } from 'zustand';
+import { create } from "zustand";
 
 type ProductStore = {
   products: Product[];
@@ -65,9 +71,10 @@ type ProductStore = {
 
 export const useProductStore = create<ProductStore>((set) => ({
   products: [],
-  addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
+  addProduct: (product) =>
+    set((state) => ({ products: [...state.products, product] })),
   fetchProducts: async () => {
-    const response = await api.get('/products');
+    const response = await api.get("/products");
     set({ products: response.data });
   },
 }));
@@ -77,28 +84,47 @@ export const useProductStore = create<ProductStore>((set) => ({
 
 ```
 src/
+├─ api/
 ├─ assets/
+├─ common/
+│  ├─ constants/
+│  ├─ hooks/
+│  ├─ interfaces/
+│  ├─ utils/
+│  └─ zod/
 ├─ components/
-│  ├─ charts/
-│  ├─ forms/
-│  ├─ ProductGrid/
-│  └─ Shared/
-├─ hooks/
-├─ stores/       # Zustand stores
-├─ types/
-├─ utils/
+│  ├─ AlertDialog/
+│  ├─ Charts/
+│  ├─ DataGrid/
+│  ├─ EmptyState/
+│  ├─ Footer/
+│  ├─ Indicator/
+│  ├─ MainMenu/
+│  ├─ MenuAction/
+│  ├─ Modal/
+│  ├─ NavBar/
+│  └─ ProductForm/
+├─ layout/
+├─ routes/
+├─ services/
+├─ theme/
 ├─ App.tsx
+├─ index.css
+├─ vite-env.d.ts
 └─ main.tsx
+
 ```
 
 ## 🚀 Instalación
 
 1. Clonar repositorio:
+
    ```bash
-   git clone https://github.com/tu-usuario/dashboard-productos.git
+   git clone https://github.com/hsvchcl/blackboard-frontend.git
    ```
 
 2. Instalar dependencias:
+
    ```bash
    npm install
    # o
@@ -106,8 +132,9 @@ src/
    ```
 
 3. Variables de entorno (crear .env):
+
    ```env
-   VITE_API_BASE_URL=http://api.endpoint.com
+   VITE_API_URL=http://localhost:3010/api/v1
    ```
 
 4. Iniciar servidor de desarrollo:
@@ -117,13 +144,12 @@ src/
 
 ## 📌 Scripts Disponibles
 
-| Comando           | Descripción                             |
-|-------------------|-----------------------------------------|
-| `npm run dev`     | Inicia servidor de desarrollo (Vite)    |
-| `npm run build`   | Crea build para producción              |
-| `npm run preview` | Previsualiza build localmente           |
-| `npm run lint`    | Ejecuta linter (ESLint)                 |
-| `npm run test`    | Ejecuta pruebas unitarias               |
+| Comando           | Descripción                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Inicia servidor de desarrollo (Vite) |
+| `npm run build`   | Crea build para producción           |
+| `npm run preview` | Previsualiza build localmente        |
+| `npm run lint`    | Ejecuta linter (ESLint)              |
 
 ## 🤝 Contribución
 
@@ -133,6 +159,4 @@ src/
 4. Push al branch (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-## 📄 Licencia
 
-MIT License - ver [LICENSE.md](LICENSE.md) para más detalles.
