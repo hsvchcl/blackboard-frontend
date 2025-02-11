@@ -4,11 +4,13 @@ import { create } from "zustand";
 
 interface ProductState {
   products: ProductDataGridProps;
+  loading: boolean;
   setProductRows: (product: Product[]) => void;
   deleteProduct: (id: number) => void;
   updateProduct: (product: Product) => void;
   addProduct: (product: Product) => void;
   reset: () => void;
+  setLoading: (loading: boolean) => void;
 }
 
 export const useProductStore = create<ProductState>((set) => ({
@@ -27,12 +29,17 @@ export const useProductStore = create<ProductState>((set) => ({
         key: "price",
       },
       {
+        label: "Ventas",
+        key: "sales",
+      },
+      {
         label: "Acciones",
         key: "action",
       },
     ],
     rows: [],
   },
+  loading: true,
   deleteProduct: (id) =>
     set((state) => ({
       products: {
@@ -85,4 +92,5 @@ export const useProductStore = create<ProductState>((set) => ({
         rows: [...state.products.rows, product],
       },
     })),
+  setLoading: (loading) => set({ loading }),
 }));

@@ -65,15 +65,21 @@ export const ProductForm = ({
       };
       createProduct(completeData)
         .then((response) => {
-          enqueueSnackbar(<Typography>{response?.data.message}</Typography>, {
-            variant: "success",
-          });
-          addProductFromStore(completeData as Product);
+          if (response?.data.success) {
+            enqueueSnackbar(<Typography>{response?.data.message}</Typography>, {
+              variant: "success",
+            });
+            addProductFromStore(completeData as Product);
+          } else {
+            throw new Error(
+              response?.data.message || "Error al crear producto"
+            );
+          }
           handleClose?.();
         })
         .catch((error) => {
           console.error(error);
-          enqueueSnackbar("Ocurrió un error al crear el producto", {
+          enqueueSnackbar(<Typography>Error al crear producto</Typography>, {
             variant: "error",
           });
         });

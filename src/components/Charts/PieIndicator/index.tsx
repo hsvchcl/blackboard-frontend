@@ -24,7 +24,7 @@ export const PieIndicator = () => {
         {
           data: [
             ...categoriesByStock.map((cat) => ({
-              label: cat.category,
+              label: cat.category || "uncategorized",
               value: cat.totalStock,
             })),
           ],

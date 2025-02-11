@@ -59,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const NavBar = () => {
-  const { setProductRows } = useProductStore((state) => state);
+  const { setProductRows, setLoading } = useProductStore((state) => state);
   const toggleDrawer = useMainMenuStore((state) => state.toggleDrawer);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -94,6 +94,9 @@ export const NavBar = () => {
               variant: "error",
             }
           );
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   }, [debouncedSearchTerm]);

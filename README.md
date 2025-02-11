@@ -23,7 +23,7 @@ Aplicación web para visualización y gestión de productos mediante un dashboar
     - Crear nuevos productos (via menú lateral)
     - Editar productos existentes (modal in-place)
     - Eliminar productos con confirmación
-  - Validación avanzada de formularios
+  - Validación avanzada de formularios (react-hook-form, zod)
 
 - **UX Avanzado**
   - Menú lateral colapsable

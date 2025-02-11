@@ -5,7 +5,14 @@ import Typography from "@mui/material/Typography";
 
 export const Footer = () => {
   return (
-    <Stack mt={2} borderRadius={1} minHeight={200} justifyContent={"center"} bgcolor={"black"} color={"white"}>
+    <Stack
+      mt={2}
+      borderRadius={1}
+      minHeight={200}
+      justifyContent={"center"}
+      bgcolor={"black"}
+      color={"white"}
+    >
       <Grid container spacing={2} component={"footer"}>
         <Grid
           size={{
@@ -30,16 +37,7 @@ export const Footer = () => {
             lg: 4,
             xl: 4,
           }}
-        >
-          <Box display={"flex"} justifyContent={"center"}>
-            <Stack direction={"column"} spacing={0}>
-              <Typography fontWeight={900} textTransform={"uppercase"}>
-                By
-              </Typography>
-              <Typography variant="overline">Hans Steven Vergara</Typography>
-            </Stack>
-          </Box>
-        </Grid>
+        ></Grid>
         <Grid
           size={{
             xs: 12,
@@ -48,14 +46,9 @@ export const Footer = () => {
           }}
         >
           <Box display={"flex"} justifyContent={"center"}>
-          <Box display={"flex"} justifyContent={"center"}>
-            <Stack direction={"column"} spacing={0}>
-              <Typography fontWeight={900} textTransform={"uppercase"}>
-                Contact
-              </Typography>
-              <Typography variant="overline">hans.vergara.cl@gmail.com</Typography>
+            <Stack direction={"row"} spacing={0}>
+              <Typography variant="h6">🤖 Hans Vergara</Typography>
             </Stack>
-          </Box>
           </Box>
         </Grid>
       </Grid>

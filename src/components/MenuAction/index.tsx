@@ -12,7 +12,7 @@ import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { deleteProduct } from "@services";
-import { ChevronDown, Pencil, Trash } from "lucide-react";
+import { ChevronDown, EditIcon, Trash } from "lucide-react";
 import { enqueueSnackbar } from "notistack";
 import { useState } from "react";
 
@@ -100,7 +100,7 @@ export const MenuAction = ({ productSelected }: MenuActionProps) => {
           <MenuList>
             <MenuItem onClick={() => handleAction("edit")}>
               <ListItemIcon>
-                <Pencil size={20} />
+                <EditIcon size={20} />
               </ListItemIcon>
               <ListItemText>Editar</ListItemText>
             </MenuItem>

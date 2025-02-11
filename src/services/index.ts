@@ -3,6 +3,7 @@ import { api } from "@api";
 import { ApiResponse } from "@common/interfaces/api-response.interface";
 import { Product } from "@common/interfaces/product.interface";
 import { ProductZodType } from "@common/zod/product-schema.zod";
+import { Indicator } from "@common/interfaces/indicator.interface";
 
 export const getAllProducts = async (): Promise<
   AxiosResponse<ApiResponse<Product[]>> | undefined
@@ -54,9 +55,8 @@ export const createProduct = async (
 
 export const getProductByQuery = async (
   name?: string,
-  category?: string,
-  price?: number,
-  stock?: number
+  priceRange?: number[],
+  stockRange?: number[]
 ): Promise<AxiosResponse<ApiResponse<Product[]>> | undefined> => {
   try {
     const apiUrl = new URL("/api/v1/product", api.defaults.baseURL);
@@ -64,20 +64,34 @@ export const getProductByQuery = async (
     if (name) {
       apiUrl.searchParams.append("name", name);
     }
-    if (category) {
-      apiUrl.searchParams.append("category", category);
+
+    if (priceRange) {
+      priceRange.forEach((price) => {
+        apiUrl.searchParams.append("priceRange", price.toString());
+      });
     }
-    if (price) {
-      apiUrl.searchParams.append("price", price.toString());
-    }
-    if (stock) {
-      apiUrl.searchParams.append("stock", stock.toString());
+    if (stockRange) {
+      stockRange.forEach((stock) => {
+        apiUrl.searchParams.append("stockRange", stock.toString());
+      });
     }
     console.log(apiUrl.href);
     const response = await api.get(apiUrl.href);
     return response;
   } catch (error) {
     console.error("Error al obtener los productos", error);
+    return undefined;
+  }
+};
+
+export const getIndicators = async (): Promise<
+  AxiosResponse<ApiResponse<Indicator>> | undefined
+> => {
+  try {
+    const response = await api.get("/product/indicator-info");
+    return response;
+  } catch (error) {
+    console.error("Error al obtener los indicadores", error);
     return undefined;
   }
 };
