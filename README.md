@@ -1,4 +1,4 @@
-# Dashboard de Gestión de Productos (ReactJS + MUI)
+# Dashboard Frontend (ReactJS + MUI)
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue)](https://react.dev/)
 [![Zustand](https://img.shields.io/badge/Zustand-4.4.0-orange)](https://zustand-demo.pmnd.rs/)
